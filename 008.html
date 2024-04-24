@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vue_004</title>
+    <title>vue_008</title>
 </head>
 
 <body>
     <div id="app">
-        {{ msg }}
-        {{ count }}
+        <div v-html="msg"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
@@ -19,8 +18,7 @@
         const app = new Vue({
             el: '#app',
             data: {
-                msg: 'Hello World',
-                count: 100
+                msg: `<a href='https://www.google.co.jp/'> Google </a>`
             }
         });
     </script>

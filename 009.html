@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vue_004</title>
+    <title>vue_008</title>
+    <style>
+        .box {
+            text-align: center;
+            border: 2px solid black;
+            width: 300px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        {{ msg }}
-        {{ count }}
+        <div v-show="flag" class="box">おはようございます。</div>
+        <div v-if="flag" class="box">こんばんは。</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
@@ -19,8 +28,7 @@
         const app = new Vue({
             el: '#app',
             data: {
-                msg: 'Hello World',
-                count: 100
+                flag: false
             }
         });
     </script>
