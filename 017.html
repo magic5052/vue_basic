@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue2基礎</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>メニュー</h3>
+        <ul>
+            <li v-for="(item, index) in menuList" :key="item.id">
+                <span>{{item.name}}</span>
+                <span>{{item.price}}</span>
+                <button @click="del(item.id)">削除</button>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                menuList: [
+                    { id: 1, name: '唐揚げ定食', price: 680 },
+                    { id: 2, name: '味噌ラーメン', price: 500 },
+                    { id: 3, name: 'ピリ辛白菜ラーメン', price: 980 },
+                    { id: 4, name: 'チキン南蛮', price: 820 },
+                ]
+            },
+            methods: {
+                del(id) {
+                    this.menuList = this.menuList.filter(item => item.id !== id);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

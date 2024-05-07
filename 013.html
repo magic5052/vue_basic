@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue2基礎</title>
+    <style>
+        .box {
+            padding: 30px;
+            border: 5px solid black;
+            width: 300px;
+            height: 100px;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="box">
+            <h3>自動販売機</h3>
+            <button @click=buy(100)>コーラ　100円</button>
+            <button @click=buy(200)>コーヒー　200円</button>
+        </div>
+        <p>
+            デビットカード残高：{{money}}円
+        </p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                money: 5000
+            },
+            methods: {
+                buy(price) {
+                    this.money -= price;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

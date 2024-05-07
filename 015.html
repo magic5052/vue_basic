@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue2基礎</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-show="index>0" @click="index--">戻る</button>
+        <div>
+            <img :src="list[index]" alt="">
+        </div>
+        <button v-show="index < list.length-1" @click="index++">進む</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                index: 0,
+                list: [
+                    './013_images/11-00.gif',
+                    './013_images/11-01.gif',
+                    './013_images/11-02.gif',
+                    './013_images/11-03.gif',
+                    './013_images/11-04.png',
+                    './013_images/11-05.png',
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

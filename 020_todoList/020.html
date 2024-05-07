@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>メモ帳</title>
+</head>
+
+<body>
+
+  <section id="app">
+
+    <header class="header">
+      <h1>メモ帳</h1>
+      <input @keyup.enter="add" v-model="todoName" placeholder="タスクを入力してください" class="new-todo" />
+      <button @click="add" class="add">追加</button>
+    </header>
+
+    <section class="main">
+      <ul class="todo-list">
+        <li class="todo" v-for="(item, index) in list" :key="item.id">
+          <div class="view">
+            <span class="index">{{index+1}}. </span> <label>{{item.name}}</label>
+            <button class="destroy" @click="del(item.id)"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 配列の元素がある時だけ表示する -->
+    <footer class="footer" v-show="list.length>0">
+      <span class="todo-count">合計：<strong>{{list.length}}</strong></span>
+      <button @click="clear" class="clear-completed">
+        リセット
+      </button>
+    </footer>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todoName: '',
+        list: [
+          { id: 1, name: 'タイ料理を食べる' },
+          { id: 2, name: 'ITを勉強する' },
+          { id: 3, name: '動画を見る' },
+        ]
+      },
+      methods: {
+        del(id) {
+          this.list = this.list.filter(item => item.id !== id)
+        },
+
+        add() {
+          if (this.todoName.trim() === '') {
+            alert("タスク内容を入力してください！")
+            return
+          }
+          this.list.unshift({
+            id: +new Date(),
+            name: this.todoName
+          })
+          this.todoName = ''
+        },
+
+        clear() {
+          this.list = []
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>
